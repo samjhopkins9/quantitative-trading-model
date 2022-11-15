@@ -51,7 +51,7 @@ private:
     vector<int> volume;
     void input(string name, string interval){
         ifstream fin;
-        fin.open("/Users/samjhopkins9/Documents/Programming/Quantitative Trading Model/Quantitative Trading Model/Data Files/" + name + "/" + name + "_" + interval + ".txt"); // opens file
+        fin.open("~/Documents/Programming/Quantitative Trading Model/1.0/Data Files/" + name + "/" + name + "_" + interval + ".txt"); // opens file
         if (fin.is_open()){
                 int n = 0;
                 while(!fin.eof()) {
@@ -60,6 +60,7 @@ private:
                 }
                 n -= 2;
                 while(n>0){
+                    // cout << input_line[n];
                     string& line = input_line[n];
                     string year2;
                     string month2;
@@ -378,6 +379,14 @@ public:
         return date_public;
     }
     
+    vector<string> dates_public(){
+        vector<string> publicdates;
+        for (int c=0; c<lengthr; c++){
+            publicdates.push_back(get_date(c));
+        }
+        return publicdates;
+    }
+    
     string get_time(int c){
         stringstream ss;
         string hh;
@@ -546,24 +555,6 @@ public:
     }
     
     ~quotes() {
-        date.clear();
-        year.clear();
-        month.clear();
-        day.clear();
-        hour.clear();
-        minute.clear();
-        second.clear();
-        open.clear();
-        high.clear();
-        low.clear();
-        close.clear();
-        volume.clear();
-        gain_loss.clear();
-        change.clear();
-        percent_change.clear();
-        gains_in_last.clear();
-        days_since_gain.clear();
-        days_since_loss.clear();
     }
 };
 
